@@ -1,0 +1,8 @@
+language: c
+sudo: true 
+script:
+  - clang -coverage -O0 main.c -o test
+  - ./test
+
+after_success:
+- bash -c "echo Success!" 
