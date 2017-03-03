@@ -17,7 +17,7 @@ install:
     - OS_NAME_VERSION=${OS_NAME// /_}_${OS_VERSION// /_}
     - ${DOCKER_EXEC} zypper -n ar -f -G http://download.opensuse.org/repositories/devel:/tools/${OS_NAME_VERSION}/devel:tools.repo
     - ${DOCKER_EXEC} zypper -n install time.x86_64
-    - ${DOCKER_EXEC} zypper -n install lynx
+    - ${DOCKER_EXEC} zypper -n install lynx-cur
     - ${DOCKER_EXEC} zypper -n install wget
     - ${DOCKER_EXEC} wget `lynx -dump http://pbspro.org/Download.aspx | awk '/http/{print $2}' | grep openSUSE`
     - ${DOCKER_EXEC} zypper -n install unzip
