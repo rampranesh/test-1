@@ -20,7 +20,7 @@ install:
     - ${DOCKER_EXEC} zypper -n install lynx
     - ${DOCKER_EXEC} zypper -n install wget
     - ${DOCKER_EXEC} lynx -dump http://pbspro.org/Download.aspx | awk '/http/{print $2}' | grep openSUSE > link
-    - ${DOCKER_EXEC} echo link > wget
+    - ${DOCKER_EXEC} wget `cat link`
     - ${DOCKER_EXEC} zypper -n install unzip
     - ${DOCKER_EXEC} unzip openSUSE_13.2.zip
     - ${DOCKER_EXEC} zypper -n ref
