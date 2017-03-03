@@ -30,7 +30,7 @@ install:
     - ${DOCKER_EXEC} wget https://raw.githubusercontent.com/PBSPro/pbspro/master/pbspro.spec
     - ${DOCKER_EXEC} /bin/sh -c "zypper -n install \$(rpmspec --buildrequires -q pbspro.spec)"
     - ${DOCKER_EXEC} /bin/sh -c 'rpm -ivh  openSUSE_13.2/pbspro-server-14.1.0-13.1.x86_64.rpm'
-    - ${DOCKER_EXEC} zypper -n install gcc-g++
+    - ${DOCKER_EXEC} zypper -n install gcc-c++
     - ${DOCKER_EXEC} /etc/init.d/pbs start
     - ${DOCKER_EXEC} /opt/pbs/bin/qstat --version
     - ${DOCKER_EXEC} ./autogen.sh 
