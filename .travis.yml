@@ -32,4 +32,8 @@ install:
     - ${DOCKER_EXEC} /bin/sh -c 'rpm -ivh  openSUSE_13.2/pbspro-server-14.1.0-13.1.x86_64.rpm'
     - ${DOCKER_EXEC} /etc/init.d/pbs start
     - ${DOCKER_EXEC} /opt/pbs/bin/qstat --version
+    - ${DOCKER_EXEC} ./autogen.sh 
+    - ${DOCKER_EXEC} ./configure
+    - ${DOCKER_EXEC} make
+    - ${DOCKER_EXEC} ./test/unittesting/src/test_drmaa 
 script: true
