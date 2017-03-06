@@ -5,12 +5,12 @@ services:
 before_install:
     - .github/runchecks
     - docker pull opensuse
-    - docker run -it -d -h testdev.pbspro.com --name testdev -v `pwd`:`pwd` --privileged -w `pwd` opensuse /bin/sh
+    - docker run -it -d -h testdrmaa.pbspro.com --name testdrmaa -v `pwd`:`pwd` --privileged -w `pwd` opensuse /bin/sh
     - docker ps -a
-    - export DOCKER_EXEC_TTY="docker exec -it testdev"
-    - export DOCKER_EXEC="docker exec -i testdev"
-    - export DOCKER_TESTDEV_IP="$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' testdev)"
-    - ${DOCKER_EXEC} /bin/sh -c "echo '${DOCKER_TESTDEV_IP}     testdev' >> /etc/hosts"
+    - export DOCKER_EXEC_TTY="docker exec -it testdrmaa"
+    - export DOCKER_EXEC="docker exec -i testdrmaa"
+    - export DOCKER_TESTDEV_IP="$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' testdrmaa)"
+    - ${DOCKER_EXEC} /bin/sh -c "echo '${DOCKER_TESTDEV_IP}     testdrmaa' >> /etc/hosts"
     - ${DOCKER_EXEC} cat /etc/hosts
 install:
     - export OS_NAME=$(${DOCKER_EXEC} cat /etc/os-release | awk -F[=\"] '/^NAME=/ {print $3}')
