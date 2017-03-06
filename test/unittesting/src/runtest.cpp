@@ -48,14 +48,14 @@ int main(int argc, char* argv[])
         try
         {
 		CppUnit::TextUi::TestRunner runner;
-                //runner.setOutputter( new CppUnit::CompilerOutputter(&runner.result(), std::cerr));
 		CppUnit::TestFactoryRegistry &registry = CppUnit::TestFactoryRegistry::getRegistry();
 		runner.addTest(registry.makeTest());
-		testSuccessful = runner.run("", true, true, true);
+		testSuccessful = runner.run();
+		return testSuccessful?1:0;
 	} catch(const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 		testSuccessful = false;
+		return testSuccessful?1:0;
 	}
-	return testSuccessful;
 }
 
