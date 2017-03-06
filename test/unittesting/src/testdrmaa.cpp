@@ -69,7 +69,7 @@ void TestDrmaa::TestConnectionPool() {
 	prevfd = connfd[i];
         connfd[i] = tmp->reestablishConnection(connfd[i]);
         //printf("\nIndex [%d] Fd [%d]", i, connfd[i]);
-	CPPUNIT_ASSERT(prevfd == connfd[i]);
+	CPPUNIT_ASSERT(prevfd != connfd[i]);
 	i++;
 	for(x = i; x < 22; x++) {
         	connfd[x] = tmp->getConnectionFromPool(pbs_default());
