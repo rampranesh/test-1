@@ -3,6 +3,7 @@ sudo: required
 services:
     - docker
 before_install:
+    - ./github/runchecks
     - docker pull opensuse
     - docker run -it -d -h testdev.pbspro.com --name testdev -v `pwd`:`pwd` --privileged -w `pwd` opensuse /bin/sh
     - docker ps -a
